@@ -2,209 +2,13 @@
 <html>
   <head>
     <title>Spheem Wallet</title>
-
-    <style>
-    
-        body
-        {
-            background-color:black;
-            color:white;
-        }
-        
-        .white_txt
-        {
-            color:white;
-        }
-        
-        .bal
-        {
-            position: absolute;
-            top:  50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            text-align: center;
-        }
-        
-        .lbl_balance
-        {
-            font-size: 5vw;
-        }
-        
-        .lbl_purple
-        {
-            color:purple;
-        }
-        
-        .title
-        {
-            color:purple;
-            font-size: 5vw;
-        }
-    
-    </style>
-    
-    <script>
-        
-        const RC_SUCCESS = "SUCCESS"
-        const RC_INVALID_PARAMS = "INVALID_PARAMS"
-        const RC_USERNAME_TAKEN = "USERNAME_TAKEN"
-        const RC_UNKNOWN_ERR = "UNKNOWN_ERR"
-        const RC_ACCOUNT_NOT_FOUND = "ACCOUNT_NOT_FOUND"
-        const RC_INCORRECT_PASSWORD = "INCORRECT_PASSWORD"
-        const RC_RECIPIENT_NOT_FOUND = "RECIPIENT_NOT_FOUND"
-        const RC_INSUFFICIENT_FUNDS = "INSUFFICIENT_FUNDS"
-        
-        var seshUsername = null;
-        var seshPassword = null;
-        
-        function mclHttPost(_url, _request, _callback)
-        {
-            console.log(_request);
-        
-            fetch(_url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(_request),
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Success:', data);
-              _callback(data.resultCode, data.payload);
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-              _callback("LOCAL_ERR", null);
-            });
-        }
-        
-        function onClick_pay0()
-        {
-        
-        }
-    
-        
-        function _main()
-        {
-
-        }
-    
-        function updateBalance()
-        {
-            function callback_update(_resultCode, _payload)
-            {
-                if (_resultCode == RC_SUCCESS) document.getElementById("lbl_balance").innerHTML = _payload;
-                else alert("An error occurred while updating balance");
-            }
-            const URL = 'https://us-central1-spheem-2a540.cloudfunctions.net/login';
-            requestObj = { username:seshUsername, password:seshPassword };
-            mclHttPost(URL,requestObj, callback_update);
-        }
-        
-    
-        function enterSesh(_username, _password, _balance)
-        {
-            document.getElementById("lbl_balance").innerHTML = _balance;
-            document.getElementById("lbl_username").innerHTML = _username;
-            document.getElementById("seshDiv").hidden = false;
-            document.getElementById("loginDiv").hidden = true;
-            seshUsername = _username;
-            seshPassword = _password;
-        }
-        
-        
-        
-        /*** CREATE ACCOUNT ***/
-        function onClick_createAccount()
-        {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            
-            function callback_create(_resultCode, _payload)
-            {
-                if (_resultCode == RC_SUCCESS)
-                {
-                    enterSesh(username, password, 0);
-                    alert("Account Created!");
-                }
-                else
-                {
-                    alert(_resultCode);
-                }
-            }
-        
-            const URL = 'https://us-central1-spheem-2a540.cloudfunctions.net/createAccount';
-            requestObj = { username:username, password:password };
-            mclHttPost(URL,requestObj, callback_create);
-        }
-        
-        /*** LOGIN ***/
-        function onClick_login()
-        {
-            
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            
-            function callback_login(_resultCode, _payload)
-            {
-                if (_resultCode == RC_SUCCESS)
-                {
-                    enterSesh(username, password, _payload);
-                }
-                else
-                {
-                    alert(_resultCode);
-                }
-            }
-        
-            const URL = 'https://us-central1-spheem-2a540.cloudfunctions.net/login';
-            requestObj = { username:username, password:password };
-            mclHttPost(URL,requestObj, callback_login);
-            
-        }
-        
-        /*** PAY ***/
-        function onClick_pay()
-        {
-            if (seshUsername == null) { alert("ERROR: seshUsername = null"); return; }
-            if (seshPassword == null) { alert("ERROR: seshPassword = null"); return; }
-            
-            const recipient = document.getElementById("recipient").value;
-            const amount = document.getElementById("amount").value;
-            
-            function callback_pay(_resultCode, _payload)
-            {
-                if (_resultCode == RC_SUCCESS)
-                {
-                    updateBalance();
-                    alert("Payment successful!");
-                }
-                else
-                {
-                    alert(_resultCode);
-                }
-            }
-        
-            const URL = 'https://us-central1-spheem-2a540.cloudfunctions.net/pay';
-            requestObj = { username:seshUsername, password:seshPassword, recipient:recipient, amount:amount };
-            mclHttPost(URL,requestObj, callback_pay);
-        }
-        
-        
-    </script>
-    
-
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
   </head>
   <body onload="_main();">
-
     <div class="white_txt">
-    
-        
         <div id="loginDiv" class="bal">
-        
         <h1 class="title">Spheem Wallet</h1>
-        
         <label>Username</label>
         <input type="text" id="username"><br><br>
         <label>Password&nbsp;</label>
@@ -212,18 +16,14 @@
         <button type="button" id="loginButt" onclick="onClick_login()">Login</button>
         <button type="button" id="createAccountButt" onclick="onClick_createAccount()">Create Account</button>
         <br><br><br><br>
-        
         </div>
-        
         <div id="seshDiv"  hidden="true">
-        
             <h3>Payment</h3>
             <label>Recipient</label>
             <input type="text" id="recipient"><br><br>
             <label>Amount&nbsp;&nbsp;</label>
             <input type="number" id="amount"><br><br>
             <button type="button" id="payButt" onclick="onClick_pay()">Send</button>
-            
             <div class="bal">
                 <h2 class="lbl_purple" >USERNAME</h2>
                 <h1 class="lbl_balance" id="lbl_username">???</h1>
@@ -231,12 +31,7 @@
                 <h2 class="lbl_purple" >BALANCE</h2>
                 <h1 class="lbl_balance" id="lbl_balance">???</h1>
             </div>
-        
         </div>
-    
-
     </div>
-    
   </body>
 </html>
-

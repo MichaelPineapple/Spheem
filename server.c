@@ -38,17 +38,17 @@ int main()
     {
         listen(sock, 1);
         int client = accept(sock, NULL, NULL);
-        char reqBuffer[10];
+        char reqBuffer[100];
         recv(client, reqBuffer, sizeof(reqBuffer), 0);
         printf("request: %s\n", reqBuffer);
         char respBuffer[1000];
         char* body = handleRequest(reqBuffer);
-        const char* FORMAT = "HTTP/1.1 200 OK\r\n Content-Type: text/plain\r\n Content-Length: %lu\r\n\r\n%s";
+        const char* FORMAT = "HTTP/1.1 200 OK\r\n Access-Control-Allow-Origin : *\r\n Content-Type: text/plain\r\n Content-Length: %lu\r\n\r\n%s";
         snprintf(respBuffer, sizeof(respBuffer), FORMAT, strlen(body), body);
         send(client, respBuffer, strlen(respBuffer), 0);
         printf("response: %s\n", respBuffer);
         fflush(stdout);
-        close(client);
+        //close(client);
     }
     return 0;
 }
