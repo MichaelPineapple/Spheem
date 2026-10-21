@@ -100,7 +100,7 @@ function onClick_login()
         alert("Callback!");
     }
 
-    const URL = 'http://localhost:8080/hello';
+    const URL = 'https://meowcle.net:8080/hello';
     request = "login";
     post(URL, request, callback_login);
 }
