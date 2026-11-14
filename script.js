@@ -7,9 +7,9 @@ var seshPassword = null
 function post(url, request, callback)
 {
     fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type': 'text/plain'},
-      body: request,
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(request),
     })
     .then(response => response.json())
     .then(data => {
