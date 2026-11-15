@@ -4,32 +4,16 @@ body
     color:white;
 }
 
-.white_txt
+h1
 {
-    color:white;
+    color:#005f66;
 }
 
-.bal
+.centered
 {
     position: absolute;
-    top:  50%;
+    top:  25%;
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
-}
-
-.lbl_balance
-{
-    font-size: 5vw;
-}
-
-.lbl_purple
-{
-    color:purple;
-}
-
-.title
-{
-    color:purple;
-    font-size: 5vw;
 }

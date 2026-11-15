@@ -1,37 +1,24 @@
 <!DOCTYPE html>
 <html>
+    
   <head>
+      
     <title>Spheem Wallet</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="common.js"></script>
+    <script src="index.js"></script>
+    
   </head>
-  <body onload="_main();">
-    <div class="white_txt">
-        <div id="loginDiv" class="bal">
-        <h1 class="title">Spheem Wallet</h1>
-        <label>Username</label>
-        <input type="text" id="username"><br><br>
-        <label>Password&nbsp;</label>
-        <input type="text" id="password"><br><br>
-        <button type="button" id="loginButt" onclick="onClick_login()">Login</button>
-        <button type="button" id="createAccountButt" onclick="onClick_createAccount()">Create Account</button>
-        <br><br><br><br>
-        </div>
-        <div id="seshDiv"  hidden="true">
-            <h3>Payment</h3>
-            <label>Recipient</label>
-            <input type="text" id="recipient"><br><br>
-            <label>Amount&nbsp;&nbsp;</label>
-            <input type="number" id="amount"><br><br>
-            <button type="button" id="payButt" onclick="onClick_pay()">Send</button>
-            <div class="bal">
-                <h2 class="lbl_purple" >USERNAME</h2>
-                <h1 class="lbl_balance" id="lbl_username">???</h1>
-                <br><br><br><br>
-                <h2 class="lbl_purple" >BALANCE</h2>
-                <h1 class="lbl_balance" id="lbl_balance">???</h1>
-            </div>
-        </div>
-    </div>
+  
+  <body>
+      
+      <div class="centered">
+          <h1 style="font-size: 150px; margin-bottom: 10px">Spheem</h1>
+          <input type="text"  placeholder="Username" id="username">&nbsp;
+          <input type="password" placeholder="Password" id="password">&nbsp;
+          <button type="button" onclick="onClick_login()">Login</button>
+          <button type="button" onclick="onClick_createAccount()">Create Account</button>
+      </div>
+      
   </body>
 </html>
