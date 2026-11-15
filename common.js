@@ -22,6 +22,6 @@ function post(url, request, callback)
 
 function callSpheem(verb, request, callback)
 {
-    const url = "https://meowcle.net/cgi-bin/Spheem-API/endpoints/" + verb + ".js"
+    const url = "https://meowcle.net/cgi-bin/Spheem/endpoints/" + verb + ".js"
     post(url, request, callback)
 }
