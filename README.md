@@ -1,6 +1,6 @@
 # Spheem
 
-Spheem is a toy digital (not crypto) currency system.
+Spheem is a toy digital (not crypto) currency system.<br>
 https://meowcle.net/Spheem
 
 ![img0](https://github.com/MichaelPineapple/Spheem/blob/main/screenshots/spheem0.png?raw=true)
