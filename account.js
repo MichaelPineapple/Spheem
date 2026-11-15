@@ -12,6 +12,13 @@ function updateBalance()
     callSpheem("login", request, callback_update)
 }
 
+function signOut()
+{
+    localStorage.setItem(SESHKEY_USERNAME, null)
+    localStorage.setItem(SESHKEY_PASSWORD, null)
+    window.location.href = "index.html"
+}
+
 /*** Pay ***/
 function onClick_pay()
 {
@@ -35,12 +42,14 @@ function onClick_pay()
 /*** Delete Account ***/
 function onClick_deleteAccount()
 {
+    if (!confirm("Are you sure?")) return
+    
     function callback_delete(result, payload)
     {
         if (result == RC_OK)
         {
-            exitSesh()
             alert("Account deleted!")
+            signOut()
         }
         else alert(payload)
     }
@@ -52,9 +61,7 @@ function onClick_deleteAccount()
 /** Sign Out **/
 function onClick_signOut()
 {
-    localStorage.setItem(SESHKEY_USERNAME, null)
-    localStorage.setItem(SESHKEY_PASSWORD, null)
-    window.location.href = "index.html"
+    signOut()
 }
 
 function onLoad() {
