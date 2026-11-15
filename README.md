@@ -3,8 +3,8 @@
 Spheem is a toy digital (not crypto) currency system.
 https://meowcle.net/Spheem
 
-![img0](https://github.com/MichaelPineapple/Spheem/blob/main/screenshots/spheem0.png?raw=true)
-![img1](https://github.com/MichaelPineapple/Spheem/blob/main/screenshots/spheem1.png?raw=true)
+<img src="https://github.com/MichaelPineapple/Spheem/blob/main/screenshots/spheem0.png" height="150">
+<img src="https://github.com/MichaelPineapple/Spheem/blob/main/screenshots/spheem1.png" height="150">
 
 ### Related Repos
 SpheemAPI: https://github.com/MichaelPineapple/Spheem-API <br>
