@@ -60,5 +60,6 @@ function onClick_signOut()
 function onLoad() {
     seshUsername = localStorage.getItem(SESHKEY_USERNAME)
     seshPassword = localStorage.getItem(SESHKEY_PASSWORD)
+    document.getElementById("lbl_username").innerHTML = seshUsername
     updateBalance()
 }

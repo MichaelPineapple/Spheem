@@ -7,12 +7,19 @@ body
 h1
 {
     color:#005f66;
+    margin-bottom: 10px;
+}
+
+h2
+{
+    margin-top: 0px;
+    font-size: 100px;
 }
 
 .centered
 {
     position: absolute;
-    top:  25%;
+    top:  50%;
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
