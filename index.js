@@ -1,3 +1,10 @@
+function signIn(username, password)
+{
+    localStorage.setItem(SESHKEY_USERNAME, username)
+    localStorage.setItem(SESHKEY_PASSWORD, password)
+    window.location.href = "account.html"
+}
+
 /*** Create Account ***/
 function onClick_createAccount()
 {
@@ -8,8 +15,8 @@ function onClick_createAccount()
     {
         if (result == RC_OK)
         {
-            enterSesh(username, password, 0)
             alert("Account Created!")
+            signIn(username, password)
         }
         else alert(payload)
     }
@@ -26,12 +33,7 @@ function onClick_login()
     
     function callback_login(result, payload)
     {
-        if (result == RC_OK)
-        {
-            localStorage.setItem(SESHKEY_USERNAME, username)
-            localStorage.setItem(SESHKEY_PASSWORD, password)
-            window.location.href = "account.html"
-        }
+        if (result == RC_OK) signIn(username, password)
         else alert(payload)
     }
     
