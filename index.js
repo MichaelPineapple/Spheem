@@ -22,7 +22,7 @@ function onClick_createAccount()
     }
 
     const request = { username:username, password:password }
-    callSpheem("create", request, callback_create)
+    callSpheem(VERB_CREATE, request, callback_create)
 }
 
 /*** Login ***/
@@ -38,5 +38,5 @@ function onClick_login()
     }
     
     const request = { username:username, password:password }
-    callSpheem("login", request, callback_login)
+    callSpheem(VERB_LOGIN, request, callback_login)
 }

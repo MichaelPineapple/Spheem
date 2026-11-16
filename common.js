@@ -1,6 +1,12 @@
 const RC_OK = "OK"
 const RC_FAIL = "FAIL"
 
+const VERB_LOGIN = "login"
+const VERB_CREATE = "create"
+const VERB_UPDATE = "update"
+const VERB_DELETE = "delete"
+const VERB_PAY = "pay"
+
 const SESHKEY_USERNAME = "username"
 const SESHKEY_PASSWORD = "password"
 
@@ -24,4 +30,11 @@ function callSpheem(verb, request, callback)
 {
     const url = "https://meowcle.net/cgi-bin/Spheem/endpoints/" + verb + ".js"
     post(url, request, callback)
+}
+
+function signOut()
+{
+    localStorage.setItem(SESHKEY_USERNAME, null)
+    localStorage.setItem(SESHKEY_PASSWORD, null)
+    window.location.href = "index.html"
 }

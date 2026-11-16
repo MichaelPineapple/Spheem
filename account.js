@@ -9,14 +9,7 @@ function updateBalance()
         else alert(payload)
     }
     const request = { username:seshUsername, password:seshPassword }
-    callSpheem("login", request, callback_update)
-}
-
-function signOut()
-{
-    localStorage.setItem(SESHKEY_USERNAME, null)
-    localStorage.setItem(SESHKEY_PASSWORD, null)
-    window.location.href = "index.html"
+    callSpheem(VERB_LOGIN, request, callback_update)
 }
 
 /*** Pay ***/
@@ -36,32 +29,17 @@ function onClick_pay()
     }
 
     const request = { username:seshUsername, password:seshPassword, recipient:recipient, amount:amount }
-    callSpheem("pay", request, callback_pay)
+    callSpheem(VERB_PAY, request, callback_pay)
 }
 
-/*** Delete Account ***/
-function onClick_deleteAccount()
-{
-    if (!confirm("Are you sure?")) return
-    
-    function callback_delete(result, payload)
-    {
-        if (result == RC_OK)
-        {
-            alert("Account deleted!")
-            signOut()
-        }
-        else alert(payload)
-    }
-    
-    const request = { username:seshUsername, password:seshPassword }
-    callSpheem("delete", request, callback_delete)
-}
-
-/** Sign Out **/
 function onClick_signOut()
 {
     signOut()
+}
+
+function onClick_settings()
+{
+    window.location.href = "settings.html"
 }
 
 function onLoad() {
